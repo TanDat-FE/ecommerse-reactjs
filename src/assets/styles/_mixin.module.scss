@@ -16,4 +16,5 @@
     //bo góc
     @include radius_common($radius);
     background-color: $color;
+    cursor: pointer;
 }
