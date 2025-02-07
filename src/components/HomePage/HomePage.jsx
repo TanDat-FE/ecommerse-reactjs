@@ -5,8 +5,16 @@ import Info from "@components/Info/Info";
 import AdvanceHeadling from "@components/AdvanceHeadling/AdvanceHeadling";
 import HeadingListProduct from "@components/HeadingListProduct/HeadingListProduct";
 import MainLayout from "@components/Layout/Layout";
+import { getProducts } from "@/apis/productsService";
+
+import { useEffect } from "react";
 function HomePage() {
   const { container } = styles;
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
   return (
     <div>
       <div className={container}>
