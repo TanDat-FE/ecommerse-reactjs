@@ -4,6 +4,7 @@ import styles from "./styles.module.scss";
 import Info from "@components/Info/Info";
 import AdvanceHeadling from "@components/AdvanceHeadling/AdvanceHeadling";
 import HeadingListProduct from "@components/HeadingListProduct/HeadingListProduct";
+import MainLayout from "@components/Layout/Layout";
 function HomePage() {
   const { container } = styles;
   return (
@@ -11,9 +12,11 @@ function HomePage() {
       <div className={container}>
         <MyHeader />
         <Banner />
-        <Info />
-        <AdvanceHeadling />
-        <HeadingListProduct />
+        <MainLayout>
+          <Info />
+          <AdvanceHeadling />
+          <HeadingListProduct />
+        </MainLayout>
       </div>
     </div>
   );

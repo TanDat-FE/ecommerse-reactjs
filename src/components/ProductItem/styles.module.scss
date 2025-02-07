@@ -1,0 +1,73 @@
+@import '@styles/_mixin.module.scss';
+@import '@styles/_variables.module.scss';
+
+.boxImg{
+    width: 300px;
+    height: 100%;
+    position: relative;
+    
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover; //anh se fit theo khung cha cua no (height: 353px, width: 100%)
+        
+    }
+
+    &:hover .showImgWhenHover{
+        opacity: 1;
+        transition: opacity 500ms;
+    }
+
+    .showImgWhenHover{
+        opacity: 00;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .showFncWhenHover{
+        position: absolute;
+        opacity: 0;
+        bottom: 20px;
+        right: 0px;
+        background-color: $white_color;
+        height: 160px;
+    }
+
+    &:hover .showFncWhenHover{
+        opacity: 1;
+        right: 20px;
+        transition: opacity 500ms, right 500ms;
+    }
+
+
+    .boxIcon{
+        width: 40px;
+        height: 40px;
+
+        @include flex_box_custom(center, center, 0px);
+
+        img{
+            width: 17px;
+            height: 17px;
+        }
+
+        &:hover{
+            background-color: #f1e9e9c5;
+            transition: background-color 300ms;
+        }
+    }
+}
+.title{
+    font-size: 16px;
+    color: $four_color;
+    margin: 6px 0px;
+}
+
+.cash{
+    font-size: 14px;
+    color: $thr_color;
+    font-weight: 400 ;
+}

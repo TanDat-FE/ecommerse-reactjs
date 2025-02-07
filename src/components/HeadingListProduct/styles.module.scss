@@ -3,6 +3,8 @@
 
 .container{
     @include flex_box_custom(space-between, center, 0px);
+
+    margin-top: 40px;
 }
 
 .containerItem{
