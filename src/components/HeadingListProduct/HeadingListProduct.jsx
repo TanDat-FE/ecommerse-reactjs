@@ -2,15 +2,24 @@ import styles from "./styles.module.scss";
 import CountdownBanner from "@components/CountdownBanner/CountdownBanner";
 import ProductItem from "@components/ProductItem/ProductItem";
 
-function HeadingListProduct() {
+function HeadingListProduct({ data }) {
   const { container, containerItem } = styles;
-
+  console.log(data);
   return (
     <div className={container}>
       <CountdownBanner />
       <div className={containerItem}>
-        <ProductItem />
-        <div>2</div>
+        {data.map((item) => {
+          return (
+            <ProductItem
+              key={item.id}
+              src={item.images[0]}
+              prevSrc={item.images[1]}
+              name={item.name}
+              price={item.price}
+            />
+          );
+        })}
       </div>
     </div>
   );
