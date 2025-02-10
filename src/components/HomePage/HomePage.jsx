@@ -9,6 +9,7 @@ import { getProducts } from "@/apis/productsService";
 import { useEffect, useState } from "react";
 import PopularProduct from "@components/PopularProduct/PopularProduct";
 import SaleHomepage from "@components/SaleHomepage/SaleHomepage";
+import Footer from "@components/Footer/Footer";
 function HomePage() {
   const [listProduct, setListProduct] = useState([]);
 
@@ -17,8 +18,6 @@ function HomePage() {
       setListProduct(res.contents);
     });
   }, []);
-
-  console.log(listProduct);
 
   return (
     <>
@@ -31,6 +30,7 @@ function HomePage() {
         <PopularProduct data={listProduct.slice(2, 10)} />
       </MainLayout>
       <SaleHomepage />
+      <Footer />
     </>
   );
 }

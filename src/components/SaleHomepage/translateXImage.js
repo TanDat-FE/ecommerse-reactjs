@@ -44,7 +44,7 @@ const useTranslateXImage = () => {
     return () => window.removeEventListener("scroll", scrollTracking);
   }, [scrollDriction]);
 
-  console.log(scrollPosition);
+  // console.log(scrollPosition);
 
   return {
     translateXPosition,
