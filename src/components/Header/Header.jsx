@@ -6,6 +6,10 @@ import { icons, dataMenu } from "./constant.jsx";
 import reLoadIcon from "@icons/svgs/reloadIcon.svg";
 import heartIcon from "@icons/svgs/heartIcon.svg";
 import cartIcon from "@icons/svgs/cartIcon.svg";
+import useScrollHeadling from "@/hooks/useScrollHeadling";
+import { useContext, useEffect, useState } from "react";
+import classNames from "classnames";
+import { SideBarContext } from "@/contexts/SideBarProvider";
 
 function MyHeader() {
   const {
@@ -14,10 +18,26 @@ function MyHeader() {
     containerHearder,
     containerBox,
     container,
+    fixedHeader,
+    topHeader,
   } = styles;
 
+  const { scrollPosition } = useScrollHeadling();
+  const [fixedPosition, setFixedPosition] = useState(false);
+
+  const { isOpen, setIsOpen } = useContext(SideBarContext);
+  // console.log(isOpen);
+
+  useEffect(() => {
+    setFixedPosition(scrollPosition >= 80);
+  }, [scrollPosition]);
+
   return (
-    <div className={container}>
+    <div
+      className={classNames(container, topHeader, {
+        [fixedHeader]: fixedPosition,
+      })}
+    >
       <div className={containerHearder}>
         <div className={containerBox}>
           <div className={containerBoxIcon}>
@@ -44,7 +64,7 @@ function MyHeader() {
         <div className={containerBox}>
           <div className={containerMenu}>
             {dataMenu.slice(3, 6).map((item) => {
-              return <Menu content={item.content} />;
+              return <Menu content={item.content} setIsOpen={setIsOpen} />;
             })}
           </div>
           <div className={containerBoxIcon}>

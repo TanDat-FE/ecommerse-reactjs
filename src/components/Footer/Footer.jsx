@@ -1,6 +1,5 @@
 import styles from "./styles.module.scss";
 import { dataMenu } from "./constants.jsx";
-
 function Footer() {
   const { container, boxNav, title, des } = styles;
 
