@@ -3,9 +3,9 @@ import Menu from "./Menu/Menu";
 import Logo from "@icons/images/Logo-retina.png";
 import styles from "./styles.module.scss";
 import { icons, dataMenu } from "./constant.jsx";
-import reLoadIcon from "@icons/svgs/reloadIcon.svg";
-import heartIcon from "@icons/svgs/heartIcon.svg";
-import cartIcon from "@icons/svgs/cartIcon.svg";
+import { TfiReload } from "react-icons/tfi";
+import { IoIosHeartEmpty } from "react-icons/io";
+import { IoCartOutline } from "react-icons/io5";
 import useScrollHeadling from "@/hooks/useScrollHeadling";
 import { useContext, useEffect, useState } from "react";
 import classNames from "classnames";
@@ -25,8 +25,13 @@ function MyHeader() {
   const { scrollPosition } = useScrollHeadling();
   const [fixedPosition, setFixedPosition] = useState(false);
 
-  const { isOpen, setIsOpen } = useContext(SideBarContext);
+  const { isOpen, setIsOpen, setType } = useContext(SideBarContext);
   // console.log(isOpen);
+
+  const handleOpenSideBar = (type) => {
+    setIsOpen(true);
+    setType(type);
+  };
 
   useEffect(() => {
     setFixedPosition(scrollPosition >= 80);
@@ -68,9 +73,18 @@ function MyHeader() {
             })}
           </div>
           <div className={containerBoxIcon}>
-            <img width={26} height={26} src={reLoadIcon} alt="reloadIcon" />
-            <img width={26} height={26} src={heartIcon} alt="heartIcon" />
-            <img width={26} height={26} src={cartIcon} alt="cartIcon" />
+            <TfiReload
+              style={{ width: "20px", height: "20px" }}
+              onClick={() => handleOpenSideBar("compare")}
+            />
+            <IoIosHeartEmpty
+              style={{ width: "20px", height: "20px" }}
+              onClick={() => handleOpenSideBar("wishlist")}
+            />
+            <IoCartOutline
+              style={{ width: "20px", height: "20px" }}
+              onClick={() => handleOpenSideBar("cart")}
+            />
           </div>
         </div>
       </div>
