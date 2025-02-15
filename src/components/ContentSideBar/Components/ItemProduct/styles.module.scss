@@ -14,14 +14,19 @@
     }
 
     .boxContent{
-        @include flex_box_custom(center, flex-start, 10px);
+        @include flex_box_custom(center, flex-start, 0px );
         flex-direction: column;
         font-size: 14px;
         .title{
             color: $primary_color;
         }
+        .size{
+            color: #9e9e9e;
+            margin: 7px 0px;
+        }
         .isPrice{
             color: $thr_color;
+            margin-bottom: 7px;
         }
     }
 
