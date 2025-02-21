@@ -15,7 +15,7 @@ function Cart() {
       <div className={boxIcon}>
         <div className={total}>
           <span>Subtotal:</span>
-          <span>$119.9</span>
+          <span>$99.99</span>
         </div>
         <Button content={"view cart"} />
         <Button content={"checkout"} isPrimary={false} />
