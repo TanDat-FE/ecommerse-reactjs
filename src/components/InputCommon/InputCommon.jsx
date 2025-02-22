@@ -2,9 +2,11 @@ import styles from "./styles.module.scss";
 import { IoEyeOutline } from "react-icons/io5";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { useState } from "react";
+import classNames from "classnames";
 
 function InputCommon({ label, type, isRequired = false, ...props }) {
-  const { labelInput, boxInput, container, boxIcon, formikErr } = styles;
+  const { labelInput, boxInput, container, boxIcon, formikErr, isErrorLabel } =
+    styles;
   const [showPassword, setShowPassword] = useState(true);
   const isPassword = type === "password";
   const isShowPassword = type === "password" && showPassword ? "text" : type;
@@ -22,6 +24,7 @@ function InputCommon({ label, type, isRequired = false, ...props }) {
           onBlur={props.formik.handleBlur}
           onChange={props.formik.handleChange} //lắng nghe sự thay đổi của form khi ta nhập vào ô input đó
           value={props.formik.values[props.id]}
+          className={classNames({ [isErrorLabel]: isErr })}
         />
         {isPassword && (
           <div
